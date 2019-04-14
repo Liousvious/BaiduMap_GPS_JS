@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{height:920px;width:100%;}
+        #r-result{width:100%; font-size:14px;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=pQobgLSIsBiCsxACVjDZ1ynEKiVm6pic"></script>
+    <title>GPS实时定位</title>
+    <script src="./qwebchannel.js"></script>
+</head>
+<body>
+    <div id="allmap"></div>
+    <!--div id="r-result">
+        Longitude: <input id="longitude" type="text" style="width:100px; margin-right:10px;" />
+        Latitude: <input id="latitude" type="text" style="width:100px; margin-right:10px;" />
+        <input type="button" value="查询" onclick="theLocation()" />
+    </div-->
+</body>
+<input type="button" value="C++ function callback" onclick="onShowMsgBox()">
+<script>
+  new QWebChannel(qt.webChannelTransport, function(channel) {
+    window.bridge = channel.objects.bridge;
+  })
+  function onShowMsgBox() {
+    if (bridge) {
+      bridge.showMsgBox()
+    }
+  }
+
+  function showAlert() {
+    alert('this is web alert,hello world!');
+  }
+  function showinfo() {
+    alert('this is web info,hello world!');
+  }
+</script>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var bm = new BMap.Map("allmap");
+    //var marker = new BMap.Marker(123.426009,41.770662);
+    //bm.addOverlay(marker);
+    var scaleControl = new BMap.ScaleControl({anchor:BMAP_ANCHOR_TOP_LEFT});
+
+    bm.addControl(new BMap.MapTypeControl({
+        mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+    ]}));
+    bm.addControl(scaleControl);
+    bm.addControl(new BMap.NavigationControl());
+
+    bm.centerAndZoom(new BMap.Point(123.425878,41.770301),18);
+    bm.enableScrollWheelZoom(true);
+    bm.enableContinuousZoom();
+    //first application to display the marker in the map, via input the longitude and latitude
+
+// 用经纬度设置地图中心点 get the longitude and latitude from Qt
+/*function theLocationl(long,lat){
+    if(long != "" && lat != ""){
+       // showinfo();
+        map.clearOverlays();
+        var new_point = new BMap.Point(long, lat);
+        var marker = new BMap.Marker(new_point);  // 创建标注
+        map.addOverlay(marker);              // 将标注添加到地图中
+        map.panTo(new_point);
+    }
+}*/
+
+
+function theLocation(longitude, latitude){
+    if (longitude !="" && latitude !=""){
+
+        bm.clearOverlays();
+        var ggPoint = new BMap.Point(longitude,latitude);       
+        translateCallback = function (data){
+          if(data.status === 0) {
+            var marker = new BMap.Marker(data.points[0]);
+            bm.addOverlay(marker);
+            //marker.disableMassClear();
+            bm.setCenter(data.points[0]);
+          }
+        }
+        setTimeout(function(){
+            var convertor = new BMap.Convertor();
+            var pointArr = [];
+            pointArr.push(ggPoint);
+            convertor.translate(pointArr, 1, 5, translateCallback)
+        }, 100);
+    }
+}
+
+</script>
