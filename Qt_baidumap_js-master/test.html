@@ -65,9 +65,9 @@
        // showinfo();
         map.clearOverlays();
         var new_point = new BMap.Point(long, lat);
-        var marker = new BMap.Marker(new_point);  // 创建标注
-        map.addOverlay(marker);              // 将标注添加到地图中
-        map.panTo(new_point);
+        var marker = new BMap.Marker(new_point);  // make a new marker
+        map.addOverlay(marker);                   
+        map.panTo(new_point);                    
     }
 }*/
 
@@ -89,7 +89,7 @@ function theLocation(longitude, latitude){
             var convertor = new BMap.Convertor();
             var pointArr = [];
             pointArr.push(ggPoint);
-            convertor.translate(pointArr, 1, 5, translateCallback)
+            convertor.translate(pointArr, 1, 5, translateCallback)   //(1, 5) indicates from WGS-84 to BD-09
         }, 100);
     }
 }
