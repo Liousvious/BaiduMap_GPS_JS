@@ -44,8 +44,48 @@
         </widget>
        </item>
        <item>
+        <widget class="QWidget" name="widget_2" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_mouse_longitude">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_mouse_latitude">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <widget class="QWidget" name="widget" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="client_connect">
+            <property name="text">
+             <string>connect</string>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QPushButton" name="client_Clicked">
             <property name="text">
@@ -57,6 +97,13 @@
            <widget class="QPushButton" name="Disconnect_Clicked">
             <property name="text">
              <string>Stop</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="path_Clicked">
+            <property name="text">
+             <string>Path Plan</string>
             </property>
            </widget>
           </item>
