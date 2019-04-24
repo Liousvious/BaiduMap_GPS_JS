@@ -3,7 +3,7 @@
 	QwebWgineView -> show BaiduMap online
 	Qwebchannel(update latter)
 	
-/************************update**************************/
+  # update
 
 	1.except for basic applications about GPS location via TCP/IP,I have added other functions which included path planning.
 	2.since there are some obstacles in our road,I have also added the obstacle longitude and latitude in my program.
