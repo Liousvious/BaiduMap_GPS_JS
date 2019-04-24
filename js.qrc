@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>echarts.js</file>
-        <file>Bmap.html</file>
-        <file>qwebchannel.js</file>
-        <file>circle.png</file>
-        <file>stop_icon.png</file>
-    </qresource>
-</RCC>
