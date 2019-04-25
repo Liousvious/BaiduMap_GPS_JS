@@ -1,7 +1,7 @@
 # BaiduMap_GPS_JS
 	IDE:Qt 5.12.2
-	QwebWgineView -> show BaiduMap online
-	Qwebchannel
+	QwebEgineView -> Show BaiduMap online and run javascript in Qt,which will show the received information on it. 
+	Qwebchannel -> Retrieve the information contained in BaiduMap and show them in Qt GUI. 
 	
   ## update
 
